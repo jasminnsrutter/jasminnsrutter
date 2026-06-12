@@ -66,4 +66,4 @@ Graduated: May 2025
 ---
 ## GitHub Stats
 ![GitHub Stats](https://github-readme-stats.vercel.app/api?username=jasminnsrutter&show_icons=true)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/username=jasminnsrutter&layout=compact)
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs?username=jasminnsrutter&layout=compact)
