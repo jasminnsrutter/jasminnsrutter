@@ -1,0 +1,40 @@
+body {
+    background-color: #aec5eb; /* Light Blue background */
+    color: #3a405a;           /* Dark Slate text */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+nav {
+    background-color: #3a405a; /* Dark Navy for Nav */
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: #aec5eb;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project-card {
+    background-color: white;
+    border-left: 5px solid #39afa3;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #39afa3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2e8b81;
+}
