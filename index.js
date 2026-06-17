@@ -38,3 +38,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Select all layout elements tagged for animation
+    const elementsToReveal = document.querySelectorAll(".reveal");
+
+    // Configure the observer setup
+    const observerOptions = {
+        root: null,         // Use browser viewport as base bounding box
+        threshold: 0.12,    // Trigger animation when 12% of the element is visible
+        rootMargin: "0px"   
+    };
+
+    const revealOnScrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add the CSS class that changes opacity and transforms layout positions
+                entry.target.classList.add("active");
+                // Stop observing once animated to lock the layout placement permanently
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Attach tracking system to designated layout segments
+    elementsToReveal.forEach(element => {
+        revealOnScrollObserver.observe(element);
+    });
+});
