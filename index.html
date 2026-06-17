@@ -1,15 +1,43 @@
-<form action="https://api.web3forms.com/submit" method="POST">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasminn Rutter | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-    <label for="name">Name:</label>
-    <input type="text" name="name" required>
+    <section id="about">
+        <h1>Hi, I'm Jasminn Rutter</h1>
+        <p>I am a web developer building clean, responsive projects.</p>
+    </section>
 
-    <label for="email">Email:</label>
-    <input type="email" name="email" required>
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-card">
+            <h3>Project One</h3>
+            <p>Description of what this project does and the tech I used.</p>
+        </div>
+    </section>
 
-    <label for="message">Message:</label>
-    <textarea name="message" required></textarea>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
 
-    <button type="submit">Submit</button>
-</form>
+    <script src="index.js"></script>
+</body>
+</html>
