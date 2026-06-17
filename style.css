@@ -1,40 +1,18 @@
-body {
-    background-color: #aec5eb; /* Light Blue background */
-    color: #3a405a;           /* Dark Slate text */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
+/* Inject your exact color palette into Pico's design architecture */
+:root {
+    --pico-primary: #39afa3;             /* Teal for links and buttons */
+    --pico-primary-background: #39afa3;  /* Button backgrounds */
+    --pico-primary-hover: #2e8b81;       /* Slightly darker teal for hover states */
 }
 
-nav {
-    background-color: #3a405a; /* Dark Navy for Nav */
-    padding: 1rem;
-    text-align: center;
+/* Enforce your specific layout rules for Light Mode */
+[data-theme="light"], :root:not([data-theme="dark"]) {
+    --pico-background-color: #aec5eb;    /* Your Light Blue page background */
+    --pico-color: #3a405a;               /* Your Dark Slate text color */
+    --pico-card-background-color: #ffffff; /* Crisp white backgrounds for project blocks */
 }
 
-nav a {
-    color: #aec5eb;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.project-card {
-    background-color: white;
-    border-left: 5px solid #39afa3;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 5px;
-}
-
-button {
-    background-color: #39afa3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #2e8b81;
+/* Center your content layout and add cozy breathing room */
+main.container {
+    padding: 40px 20px;
 }

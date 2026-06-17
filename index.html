@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasminn Rutter | Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav>
@@ -14,30 +17,45 @@
         <a href="#contact">Contact</a>
     </nav>
 
-    <section id="about">
-        <h1>Hi, I'm Jasminn Rutter</h1>
-        <p>I am a web developer building clean, responsive projects.</p>
-    </section>
+    <main>
 
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="project-card">
-            <h3>Project One</h3>
-            <p>Description of what this project does and the tech I used.</p>
-        </div>
-    </section>
+        <!-- About Section -->
+        <section id="about" style="padding: 40px 0">
+            <h1>Hi, I'm Jasmin Rutter</h1>
+            <p>I am a web developer building clean, responsive projects.</p>
+        </section>
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
+        <hr>
+
+        <!-- Projects Section -->
+        <section id="projects" style="padding: 40px 0;">
+            <h2>My Projects</h2>
+
+            <!-- Pico turns <article> into a beautiful, clean card automatically -->
+            <article>
+                <h3>Project One</h3>
+                <p>Description of what this project does and the tech I used.</p>
+                <a href="#">View Code &rarr;</a>
+            </article>
+        </section>
+
+        <hr>
+
+        <section id="contact" style="padding: 40px 0;">
+            <h2>Let's Connect</h2>
+            <article>
+                <h3>Find me on LinkedIn</h3>
+                <p>I am always open to discussing new opportunities, web development, and tech trends. Feel free to
+                    reach out!</p>
+
+                <a href="https://linkedin.com/in/YOUR-PROFILE-URL" role="button" target="_blank">
+                    Visit My LinkedIn Profile
+                </a>
+            </article>
+        </section>
+    </main>
 
     <script src="index.js"></script>
 </body>
+
 </html>
