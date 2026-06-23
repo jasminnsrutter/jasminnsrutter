@@ -31,10 +31,22 @@ I am an **Information Technology graduate** with hands-on experience in software
 
 ## 🚀 Featured Projects
 
-### 📂 [Personal Portfolio Website](https://github.com/jasminnsrutter/jasminnsrutter)
-- **Description:** A clean, responsive single-page portfolio designed to showcase my developer journey, active projects, and technical experience.
-- **Tech Stack:** `HTML5`, `CSS3`, `Pico.css`, `GitHub Pages`
-- **Live Link:** [View Live Site](https://jasminnsrutter.github.io/jasminnsrutter/)
+### 📂 SuiteCRM to ActiveCampaign Middleware (FastAPI, Python, MySQL/phpMyAdmin) | Summer 2026
+- Automated CRM contact syncing and email segmentation  
+- Synced contacts and accounts from SuiteCRM target lists to ActiveCampaign  
+- Built scheduled and manual import processes for contact management  
+- Implemented tagging and list filters to segment users by interest for targeted emails  
+
+### 📂 eCommerce Website (PHP, SQL, Joomla) | Summer 2025
+- Redesigned pages and automated CSV imports for improved product management  
+- Updated website to dynamically display products from the database  
+- Built a CSV import tool to automate product uploads  
+- Redesigned frontend layout to improve user experience and visual presentation  
+
+### 📂 Integrating Documentation (Cucumber, JavaScript) | Spring 2024
+- Researched and integrated documentation tools for JavaScript projects  
+- Built automated tests for web forms and user input using Gherkin and Cucumber  
+- Used Cucumber for behavior-driven development and Selenium WebDriver for testing  
 
 ---
 
