@@ -36,11 +36,6 @@ I am an **Information Technology graduate** with hands-on experience in software
 - **Tech Stack:** `HTML5`, `CSS3`, `Pico.css`, `GitHub Pages`
 - **Live Link:** [View Live Site](https://jasminnsrutter.github.io/jasminnsrutter/)
 
-### 📂 [Project Name Placeholder]
-- **Description:** A brief description of another project you are proud of. Explain what problem it solves and what you built.
-- **Tech Stack:** `Python`, `Django`, `MySQL`
-- **Repository:** [View Code](https://github.com/jasminnsrutter)
-
 ---
 
 ## 💼 Professional Experience
