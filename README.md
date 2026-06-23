@@ -51,6 +51,12 @@ I am an **Information Technology graduate** with hands-on experience in software
 ---
 
 ## 💼 Professional Experience
+### 💻 Software Engineer | *Case Medical* | Bloomfield, NJ
+📅 **September 2025 — Present**
+- Developing a new user interface module for efficient RFID and UDI data entry.
+- Engineering backend logic to validate ID uniqueness and generate tracking labels.
+- Updating e-commerce database records to support an evolving product catalog.
+- Optimizing website content and visuals with marketing teams to improve SEO.
 
 ### 🚆 Software Engineer Intern | *NJ Transit*
 📅 **January 2024 — June 2024**
