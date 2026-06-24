@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jasmin Rutter | Portfolio</title>
+    <title>Jasmin Rutter - Software Engineer</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Tailwind configuration for class-based dark mode
         tailwind.config = {
-            darkMode: 'class',
+            darkMode: ['selector', '[data-theme="dark"]'],
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                        sans: ['DM Sans', 'sans-serif'],
+                        mono: ['DM Mono', 'monospace'],
                     }
                 }
             }
@@ -24,341 +25,478 @@
     <!-- Inter Font for enhanced corporate typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Simple script to prevent flash of dark/light mode on load -->
     <script>
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
         }
     </script>
 </head>
 
 <body
-    class="bg-slate-50/50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500 antialiased selection:bg-blue-500/10 selection:text-blue-600">
+    class="font-sans bg-[#F8F7F4] text-[#1A1917] dark:bg-[#111110] dark:text-[#F0EEE9] line-height-1.6 antialiased transition-colors duration-300 selection:bg-[#3D52A0]/10 selection:text-[#3D52A0]">
+
+    <div
+        class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] pointer-events-none overflow-hidden opacity-50 dark:opacity-30 z-0">
+        <div
+            class="absolute top-[-10%] left-[20%] w-[400px] h-[400px] rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 blur-[120px]">
+        </div>
+        <div
+            class="absolute top-[10%] right-[10%] w-[350px] h-[350px] rounded-full bg-gradient-to-br from-pink-400 to-rose-400 blur-[130px]">
+        </div>
+    </div>
 
     <nav
-        class="sticky top-0 z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-900/50 transition-all duration-300">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="#about"
-                class="text-sm font-semibold tracking-widest text-slate-900 dark:text-white uppercase transition-opacity hover:opacity-80">
+        class="sticky top-0 z-50 bg-[#F8F7F4]/80 dark:bg-[#111110]/80 backdrop-blur-xl border-b border-[#E2DFD8] dark:border-[#2E2D2A] transition-colors duration-300">
+        <div class="max-w-[960px] mx-auto px-6 h-[60px] flex items-center justify-between">
+            <span class="text-xs font-bold tracking-tight bg-gradient-to-r from-[#3D52A0] via-[#6B7FD4] to-pink-500 bg-clip-text text-transparent mb-4">
                 Jasmin Rutter
-            </a>
+            </span>
 
-            <div class="flex items-center space-x-8 text-[11px] font-medium tracking-widest uppercase text-slate-500 dark:text-slate-400">
-                <a href="#about"
-                    class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
-                <a href=" #skills"
-                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Skills</a>
-                <a href=" #projects"
-                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Projects</a>
-                <a href=" #experience"
-                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Experience</a>
-                <a href="#contact"
-                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
+            <div class="flex items-center gap-7">
+                <div
+                    class="hidden sm:flex items-center gap-7 text-[11px] font-semibold tracking-wider uppercase text-[#7A7774] dark:text-[#7A7774]">
+                    <a href="#about" class="hover:text-[#1A1917] dark:hover:text-[#F0EEE9] transition-colors">About</a>
+                    <a href="#skills"
+                        class="hover:text-[#1A1917] dark:hover:text-[#F0EEE9] transition-colors">Skills</a>
+                    <a href="#projects"
+                        class="hover:text-[#1A1917] dark:hover:text-[#F0EEE9] transition-colors">Projects</a>
+                    <a href="#experience"
+                        class="hover:text-[#1A1917] dark:hover:text-[#F0EEE9] transition-colors">Experience</a>
+                    <a href="#contact"
+                        class="hover:text-[#1A1917] dark:hover:text-[#F0EEE9] transition-colors">Contact</a>
+                </div>
+                <div class="sm:hidden text-[11px] font-semibold tracking-wider uppercase text-[#7A7774]">
+                    <a href="#contact"
+                        class="hover:text-[#1A1917] dark:hover:text-[#F0EEE9] transition-colors">Contact</a>
+                </div>
 
-                <!-- Dark Mode Toggle Button -->
-                <button id="theme-toggle"
-                    class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 hover:ring-pink-400 dark:hover:ring-blue-400 transition-all focus:outline-none">
-                    <!-- Sun Icon (visible in dark mode) -->
-                    <svg id="theme-toggle-sun" class="hidden w-5 h-5 text-amber-400" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 2.293a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zm4.243 4.243a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM16 10a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm2.293 4.293a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zm4.243 4.243a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM11 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.243-1.414a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 5a5 5 0 100 10 5 5 0 000-10z">
-                        </path>
+                <button
+                    class="w-9 h-9 rounded-lg bg-[#F0EEE9] dark:bg-[#242320] border border-[#E2DFD8] dark:border-[#2E2D2A] flex items-center justify-center text-[#7A7774] hover:border-[#3D52A0] hover:text-[#3D52A0] dark:hover:border-[#7B93E8] dark:hover:text-[#7B93E8] transition-colors focus:outline-none"
+                    id="theme-toggle" aria-label="Toggle theme">
+                    <svg id="icon-sun" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                     </svg>
-                    <!-- Moon Icon (visible in light mode) -->
-                    <svg id="theme-toggle-moon" class="hidden w-5 h-5 text-slate-500" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    <svg id="icon-moon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
                     </svg>
                 </button>
-
             </div>
         </div>
     </nav>
 
     <!-- Hero / About Section -->
-    <main id="about" class="max-w-5xl mx-auto px-4 py-12 md:py-20 space-y-24">
+    <main id="about" class="max-w-[960px] mx-auto px-6">
 
         <!-- About Section -->
-        <section id="about" class="space-y-6 scroll-mt-24">
-            <div class="space-y-3">
-                <h1 class="text-4xl md:text-6xl font-black tracking-tight">
-                    👋 Hi, I'm <span class="bg-gradient-to-r from-blue-600 via-sky-500 to-pink-500 bg-clip-text text-transparent">Jasmin Rutter</span>
-                </h1>
-                <h3 class="text-xl md:text-2xl font-semibold text-slate-600 dark:text-slate-400">
-                    Information Technology Graduate | Software Engineer & Web Developer
-                </h3>
+        <section id="about" class="py-20 md:py-28 border-b border-[#E2DFD8] dark:border-[#2E2D2A] scroll-mt-20">
+            <div
+                class="inline-flex items-center gap-2 font-mono text-[11px] text-[#3D52A0] dark:text-[#7B93E8] bg-[#EEF0FA] dark:bg-[#1A1E35] border border-[#3D52A0]/20 dark:border-[#7B93E8]/25 px-3 py-1 rounded-full mb-7">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#3D52A0] dark:bg-[#7B93E8] animate-pulse"></span>
+                Availabile for Opportunities
             </div>
-
-            <!-- Badges -->
-            <div class="flex flex-wrap gap-3 pt-2">
-                <a href="https://jasminnsrutter.github.io/jasminnsrutter/" target="_blank" class="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border border-sky-200 dark:border-sky-900 transition-transform hover:-translate-y-0.5">
-                    🌐 Live Portfolio
-                </a>
-                <a href="https://linkedin.com/in/jasmin-rutter" target="_blank" class="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 text-white transition-transform hover:-translate-y-0.5 shadow-md shadow-blue-500/20">
-                    💼 LinkedIn
-                </a>
-            </div>
-
-            <p class="text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-                I am an <strong class="text-slate-900 dark:text-white font-semibold">Information Technology graduate</strong> with hands-on experience in software engineering, full-stack web development, and database management. I love building practical applications, engineering clean user interfaces, and solving real-world problems with code.
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-[#1A1917] dark:text-[#F0EEE9] mb-4">Jasmin
+                Rutter</h1>
+            <p class="text-xl font-normal text-[#4A4845] dark:text-[#B8B5AE] mb-6 max-w-lg">Software Engineer &amp;
+                Full-Stack Web Developer</p>
+            <p class="text-base text-[#4A4845] dark:text-[#B8B5AE] max-w-xl leading-relaxed mb-9">
+                IT graduate from NJIT with hands-on experience in software engineering, full-stack development, and
+                database systems. I build practical applications with clean interfaces and maintainable code.
             </p>
 
-            <!-- Education Sub-card -->
-            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm max-w-2xl relative overflow-hidden group">
-                <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-pink-500"></div>
-                <div class="flex justify-between items-start flex-wrap gap-2 pl-2">
-                    <div>
-                        <h4 class="font-bold text-lg">Bachelor of Science in Information Technology</h4>
-                        <p class="text-sm text-slate-500 dark:text-slate-400">New Jersey Institute of Technology (NJIT)</p>
-                    </div>
-                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-pink-50 text-pink-700 dark:bg-pink-950/50 dark:text-pink-300 border border-pink-200 dark:border-pink-900">
-                        Graduated: May 2025
-                    </span>
+            <!-- Badges -->
+            <div class="flex flex-wrap gap-3 mb-12">
+                <a href="https://linkedin.com/in/jasmin-rutter" target="_blank"
+                    class="inline-flex items-center gap-2 text-xs font-semibold px-5 py-3 rounded-lg bg-[#1A1917] text-[#F8F7F4] dark:bg-[#F0EEE9] dark:text-[#111110] hover:opacity-90 transition-opacity">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                        <circle cx="4" cy="4" r="2" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://jasminnsrutter.github.io/jasminnsrutter/" target="_blank"
+                    class="inline-flex items-center gap-2 text-xs font-semibold px-5 py-3 rounded-lg bg-transparent text-[#1A1917] dark:text-[#F0EEE9] border border-[#C8C4BC] dark:border-[#3E3D3A] hover:bg-[#F0EEE9] dark:hover:bg-[#242320] transition-colors">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <line x1="2" y1="12" x2="22" y2="12" />
+                        <path
+                            d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
+                    </svg>
+                    Live Portfolio
+                </a>
+                <a href="mailto:jasrutter36@gmail.com"
+                    class="inline-flex items-center gap-2 text-xs font-semibold px-5 py-3 rounded-lg bg-transparent text-[#1A1917] dark:text-[#F0EEE9] border border-[#C8C4BC] dark:border-[#3E3D3A] hover:bg-[#F0EEE9] dark:hover:bg-[#242320] transition-colors">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                    Email
+                </a>
+            </div>
+
+            <div
+                class="flex items-start gap-4 p-5 rounded-xl bg-white/70 dark:bg-[#1C1B19]/70 backdrop-blur-md border border-[#E2DFD8] dark:border-[#2E2D2A] max-w-[500px] shadow-sm">
+                <div
+                    class="w-10 h-10 rounded-lg bg-[#F0EEE9] dark:bg-[#242320] border border-[#E2DFD8] dark:border-[#2E2D2A] flex items-center justify-center text-lg shrink-0">
+                    🎓
                 </div>
+                <div class="space-y-0.5">
+                    <div class="text-sm font-bold text-[#1A1917] dark:text-[#F0EEE9]">B.S. in Information Technology
+                    </div>
+                    <div class="text-xs text-[#7A7774] dark:text-[#7A7774]">New Jersey Institute of Technology (NJIT)
+                    </div>
+                </div>
+                <span
+                    class="ml-auto font-mono text-[10px] font-medium tracking-wider text-[#7A7774] bg-[#ECEAE5] dark:bg-[#252420] dark:text-[#C8C4BC] px-2.5 py-1 rounded-full">
+                    May 2025
+                </span>
             </div>
         </section>
 
-        <!-- Technical Skills Section -->
-        <section id="skills" class="scroll-mt-24 space-y-8">
-            <div class="border-l-4 border-pink-500 pl-4">
-                <h2 class="text-3xl font-extrabold tracking-tight">Technical Skills</h2>
-                <p class="text-sm text-slate-500 dark:text-slate-400">Tools, languages, and frameworks I use to bring ideas to life.</p>
+        <section id="skills" class="py-20 border-b border-[#E2DFD8] dark:border-[#2E2D2A] scroll-mt-20 space-y-10">
+
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 font-mono text-[10px] font-semibold tracking-widest text-[#3D52A0] dark:text-[#7B93E8] uppercase mb-4 before:content-[''] before:block before:width-5 before:h-[1px] before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                    Technical Skills</div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#1A1917] dark:text-[#F0EEE9] mb-2">What I
+                    work with</h2>
+                <p class="text-sm text-[#7A7774]">Languages, frameworks, and tools I use day to day.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Languages Card -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
-                    <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-2">
-                        <span>🔤</span> Languages
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Python</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Java</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">JavaScript</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">SQL</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">PHP</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Bash</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">HTML5</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">CSS3</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div
+                    class="p-5 rounded-xl bg-white/70 dark:bg-[#1C1B19]/70 backdrop-blur-md border border-[#E2DFD8] dark:border-[#2E2D2A] shadow-sm">
+                    <div class="font-mono text-[10px] tracking-widest text-[#7A7774] uppercase mb-3">Languages</div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#EEF0FA] text-[#3D52A0] dark:bg-[#1A1E35] dark:text-[#7B93E8]">Python</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#EEF0FA] text-[#3D52A0] dark:bg-[#1A1E35] dark:text-[#7B93E8]">JavaScript</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Java</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">SQL</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">PHP</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Bash</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">HTML5</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">CSS3</span>
                     </div>
                 </div>
 
-                <!-- Frameworks Card -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-pink-400 dark:hover:border-pink-500 transition-colors">
-                    <h3 class="font-bold text-lg text-pink-600 dark:text-pink-400 mb-4 flex items-center gap-2">
-                        <span>🛠️</span> Frameworks & Libraries
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Django</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">React</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Node.js</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Pico.css</span>
+                <div
+                    class="p-5 rounded-xl bg-white/70 dark:bg-[#1C1B19]/70 backdrop-blur-md border border-[#E2DFD8] dark:border-[#2E2D2A] shadow-sm">
+                    <div class="font-mono text-[10px] tracking-widest text-[#7A7774] uppercase mb-3">Frameworks</div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#EEF0FA] text-[#3D52A0] dark:bg-[#1A1E35] dark:text-[#7B93E8]">Django</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#EEF0FA] text-[#3D52A0] dark:bg-[#1A1E35] dark:text-[#7B93E8]">React</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Node.js</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Pico.css</span>
                     </div>
                 </div>
 
-                <!-- Databases Card -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-sky-400 dark:hover:border-sky-500 transition-colors">
-                    <h3 class="font-bold text-lg text-sky-600 dark:text-sky-400 mb-4 flex items-center gap-2">
-                        <span>🗄️</span> Databases
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">MySQL</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">MariaDB</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">SQLite</span>
+                <div
+                    class="p-5 rounded-xl bg-white/70 dark:bg-[#1C1B19]/70 backdrop-blur-md border border-[#E2DFD8] dark:border-[#2E2D2A] shadow-sm">
+                    <div class="font-mono text-[10px] tracking-widest text-[#7A7774] uppercase mb-3">Databases</div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#EEF0FA] text-[#3D52A0] dark:bg-[#1A1E35] dark:text-[#7B93E8]">MySQL</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">MariaDB</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">SQLite</span>
                     </div>
                 </div>
 
-                <!-- Tools & Cloud Card -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-colors md:col-span-2 lg:col-span-2">
-                    <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-2">
-                        <span>⚙️</span> Tools, Cloud & Testing
-                    </h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Git & GitHub</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Docker</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Linux</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">GitHub Pages</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Gherkin</span>
-                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Cucumber</span>
+                <div
+                    class="p-5 rounded-xl bg-white/70 dark:bg-[#1C1B19]/70 backdrop-blur-md border border-[#E2DFD8] dark:border-[#2E2D2A] shadow-sm">
+                    <div class="font-mono text-[10px] tracking-widest text-[#7A7774] uppercase mb-3">Infrastructure
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#EEF0FA] text-[#3D52A0] dark:bg-[#1A1E35] dark:text-[#7B93E8]">Git
+                            &amp; GitHub</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Docker</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Linux</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">GitHub
+                            Pages</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Cucumber</span>
+                        <span
+                            class="text-xs font-medium px-2 py-1 rounded-md bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Gherkin</span>
                     </div>
                 </div>
             </div>
         </section>
-
 
         <!-- Projects Section -->
-        <section id="projects" class="scroll-mt-24 space-y-8">
-            <div class="border-l-4 border-blue-500 pl-4">
-                <h2 class="text-3xl font-extrabold tracking-tight">Featured Projects</h2>
-                <p class="text-sm text-slate-500 dark:text-slate-400">Some of the software engineered architectures I've built.</p>
+        <section id="projects" class="py-20 border-b border-[#E2DFD8] dark:border-[#2E2D2A] scroll-mt-20 space-y-10">
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 font-mono text-[10px] font-semibold tracking-widest text-[#3D52A0] dark:text-[#7B93E8] uppercase mb-4 before:content-[''] before:block before:width-5 before:h-[1px] before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                    Projects</div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#1A1917] dark:text-[#F0EEE9] mb-2">
+                    Selected work</h2>
+                <p class="text-sm text-[#7A7774]">Applications and tools I've designed and built.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <article class="flex flex-col justify-between p-6 bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 hover:shadow-xl dark:hover:shadow-black/30 transition-all duration-300">
-                    <div class="space-y-4">
-                        <div class="flex justify-between items-start gap-4">
-                            <h3 class="text-xl font-bold tracking-tight hover:text-blue-500">
-                                <a href="https://github.com/jasminnsrutter/jasminnsrutter" target="_blank">Personal Portfolio Website 🔗</a>
-                            </h3>
-                        </div>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                            A clean, responsive single-page portfolio designed to showcase my developer journey, active projects, and technical experience.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5 pt-2">
-                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">HTML5</span>
-                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">CSS3</span>
-                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Pico.css</span>
-                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">GitHub Pages</span>
-                        </div>
-                    </div>
-                    <div class="pt-6 flex gap-4">
-                        <a href="https://jasminnsrutter.github.io/jasminnsrutter/" target="_blank" class="text-sm font-bold text-pink-600 dark:text-pink-400 hover:underline">View Live Site &rarr;</a>
-                    </div>
-                </article>
 
-                <!-- Project 2 -->
-                <article class="flex flex-col justify-between p-6 bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 hover:shadow-xl dark:hover:shadow-black/30 transition-all duration-300">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div
+                    class="p-7 rounded-2xl bg-white dark:bg-[#1C1B19] border border-[#E2DFD8] dark:border-[#2E2D2A] transition-all duration-300 hover:border-[#3D52A0]/30 dark:hover:border-[#7B93E8]/30 hover:bg-blue-50/30 dark:hover:bg-indigo-950/10 hover:shadow-xl hover:shadow-indigo-500/5">
                     <div class="space-y-4">
-                        <div class="flex justify-between items-start gap-4">
-                            <h3 class="text-xl font-bold tracking-tight hover:text-blue-500">
-                                <a href="https://github.com/jasminnsrutter" target="_blank">[Project Name Placeholder] 🔗</a>
-                            </h3>
-                        </div>
-                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                            A brief description of another project you are proud of. Explain what problem it solves and what you built.
+                        <div class="font-mono text-[10px] tracking-widest text-[#3D52A0] dark:text-[#7B93E8] uppercase">
+                            Summer 2026</div>
+                        <h3 class="text-lg font-bold text-[#1A1917] dark:text-[#F0EEE9] tracking-tight">
+                            SuiteCRM to Active Campaign Middleware</h3>
+                        <p class="text-sm text-[#4A4845] dark:text-[#B8B5AE] leading-relaxed font-light">
+                            A responsive single-page portfolio showcasing my developer journey, projects, and technical
+                            background. Built with a focus on clean semantics and fast load times.
                         </p>
-                        <div class="flex flex-wrap gap-1.5 pt-2">
-                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Python</span>
-                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Django</span>
-                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">MySQL</span>
+                    </div>
+                    <div class="pt-6 flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="text-[11px] font-medium px-2 py-0.5 rounded bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">FastAPI</span>
+                            <span
+                                class="text-[11px] font-medium px-2 py-0.5 rounded bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Python</span>
+                            <span
+                                class="text-[11px] font-medium px-2 py-0.5 rounded bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">MySQL</span>
                         </div>
+                        <a href="https://jasminnsrutter.github.io/jasminnsrutter/" target="_blank"
+                            class="text-xs font-bold text-[#3D52A0] dark:text-[#7B93E8] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform whitespace-nowrap">
+                            View &rarr;
+                        </a>
                     </div>
-                    <div class="pt-6">
-                        <a href="https://github.com/jasminnsrutter" target="_blank" class="text-sm font-bold text-pink-600 dark:text-pink-400 hover:underline">View Code &rarr;</a>
+                </div>
+
+                <div
+                    class="p-7 rounded-2xl bg-white dark:bg-[#1C1B19] border border-[#E2DFD8] dark:border-[#2E2D2A] transition-all duration-300 hover:border-[#3D52A0]/30 dark:hover:border-[#7B93E8]/30 hover:bg-blue-50/30 dark:hover:bg-indigo-950/10 hover:shadow-xl hover:shadow-indigo-500/5">
+                    <div class="space-y-4">
+                        <div class="font-mono text-[10px] tracking-widest text-[#3D52A0] dark:text-[#7B93E8] uppercase">
+                            Summer 2025</div>
+                        <h3 class="text-lg font-bold text-[#1A1917] dark:text-[#F0EEE9] tracking-tight">Next Project
+                        </h3>
+                        <p class="text-sm text-[#4A4845] dark:text-[#B8B5AE] leading-relaxed font-light">
+                            Replace this card with your next featured project — describe the problem it solves and what
+                            you built to address it.
+                        </p>
                     </div>
-                </article>
+                    <div class="pt-6 flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span
+                                class="text-[11px] font-medium px-2 py-0.5 rounded bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Python</span>
+                            <span
+                                class="text-[11px] font-medium px-2 py-0.5 rounded bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">Django</span>
+                            <span
+                                class="text-[11px] font-medium px-2 py-0.5 rounded bg-[#ECEAE5] text-[#3A3835] dark:bg-[#252420] dark:text-[#C8C4BC]">MySQL</span>
+                        </div>
+                        <a href="https://github.com/jasminnsrutter" target="_blank"
+                            class="text-xs font-bold text-[#3D52A0] dark:text-[#7B93E8] inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform whitespace-nowrap">
+                            GitHub &rarr;
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Professional Experience Section -->
-        <section id="experience" class="scroll-mt-24 space-y-8">
-            <div class="border-l-4 border-pink-500 pl-4">
-                <h2 class="text-3xl font-extrabold tracking-tight">Professional Experience</h2>
-                <p class="text-sm text-slate-500 dark:text-slate-400">A timeline of my professional work and leadership history.</p>
+        <section id="experience" class="py-20 border-b border-[#E2DFD8] dark:border-[#2E2D2A] scroll-mt-20 space-y-10">
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 font-mono text-[10px] font-semibold tracking-widest text-[#3D52A0] dark:text-[#7B93E8] uppercase mb-4 before:content-[''] before:block before:width-5 before:h-[1px] before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                    Experience</div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#1A1917] dark:text-[#F0EEE9] mb-2">Work
+                    history</h2>
+                <p class="text-sm text-[#7A7774]">Professional roles and leadership positions.</p>
             </div>
 
-            <!-- Timeline Stack -->
-            <div class="space-y-6">
-                <!-- Job 1 -->
-                 <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
-                    <div class="space-y-2">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <h3 class="text-xl font-bold">Software Engineer</h3>
-                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">Case Medical</span>
+            <div class="flex flex-col gap-4">
+                <div
+                    class="p-6 bg-white dark:bg-[#1C1B19] border border-[#E2DFD8] dark:border-[#2E2D2A] rounded-xl grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6 items-start hover:border-[#C8C4BC] dark:hover:border-[#3E3D3A] transition-colors">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-baseline gap-2">
+                            <span class="text-base font-bold text-[#1A1917] dark:text-[#F0EEE9]">Software
+                                Engineer</span>
+                            <span
+                                class="font-mono text-[11px] font-medium tracking-wide px-2.5 py-0.5 rounded bg-[#ECEAE5] text-[#7A7774] dark:bg-[#252420]">Case
+                                Medical</span>
                         </div>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
-                            <li>Developing a new user interface module for efficient RFID and UDI data entry.</li>
-                            <li>Engineering backend logic to validate ID uniqueness and generate tracking labels.</li>
-                            <li>Optimizing website content and visuals with marketing teams to improve SEO.</li>
-                        </ul>
+                        <div class="space-y-2.5 text-sm text-[#4A4845] dark:text-[#B8B5AE] font-light">
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Developing a new UI module for efficient RFID and UDI data entry and validation.</div>
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Engineering backend logic to enforce ID uniqueness and automate tracking label
+                                generation.</div>
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Collaborating with marketing to optimize website content and improve SEO performance.
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                        June 2025 — Present
+                    <div class="font-mono text-[11px] text-[#7A7774] md:pt-1 whitespace-nowrap">Jun 2025 — Present</div>
+                </div>
+
+                <div
+                    class="p-6 bg-white dark:bg-[#1C1B19] border border-[#E2DFD8] dark:border-[#2E2D2A] rounded-xl grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6 items-start hover:border-[#C8C4BC] dark:hover:border-[#3E3D3A] transition-colors">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-baseline gap-2">
+                            <span class="text-base font-bold text-[#1A1917] dark:text-[#F0EEE9]">Software Engineer
+                                Intern</span>
+                            <span
+                                class="font-mono text-[11px] font-medium tracking-wide px-2.5 py-0.5 rounded bg-[#ECEAE5] text-[#7A7774] dark:bg-[#252420]">NJ
+                                Transit</span>
+                        </div>
+                        <div class="space-y-2.5 text-sm text-[#4A4845] dark:text-[#B8B5AE] font-light">
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Contributed to core software development initiatives and feature deployments across
+                                production applications.</div>
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Worked extensively with backend infrastructure, database queries, and data management
+                                systems.</div>
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Collaborated with cross-functional teams using agile methodologies to ship improvements
+                                on schedule.</div>
+                        </div>
+                    </div>
+                    <div class="font-mono text-[11px] text-[#7A7774] md:pt-1 whitespace-nowrap">Jan 2024 — Jun 2024
                     </div>
                 </div>
 
-                <!-- Job 2 -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
-                    <div class="space-y-2">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <h3 class="text-xl font-bold">Software Engineer Intern</h3>
-                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">NJ Transit</span>
+                <div
+                    class="p-6 bg-white dark:bg-[#1C1B19] border border-[#E2DFD8] dark:border-[#2E2D2A] rounded-xl grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6 items-start hover:border-[#C8C4BC] dark:hover:border-[#3E3D3A] transition-colors">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-baseline gap-2">
+                            <span class="text-base font-bold text-[#1A1917] dark:text-[#F0EEE9]">Peer Mentor — Software
+                                Development</span>
+                            <span
+                                class="font-mono text-[11px] font-medium tracking-wide px-2.5 py-0.5 rounded bg-[#ECEAE5] text-[#7A7774] dark:bg-[#252420]">NJIT</span>
                         </div>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
-                            <li>Assisted in core software development initiatives and application feature deployments.</li>
-                            <li>Worked heavily with backend infrastructure architectures, database queries, and data management systems.</li>
-                            <li>Collaborated closely with cross-functional development teams on agile application improvements.</li>
-                        </ul>
+                        <div class="space-y-2.5 text-sm text-[#4A4845] dark:text-[#B8B5AE] font-light">
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Mentored undergraduates in core software development concepts, architecture patterns,
+                                and debugging practices.</div>
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Supported student projects through environment configuration, code reviews, and targeted
+                                technical guidance.</div>
+                        </div>
                     </div>
-                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                        Jan 2024 — June 2024
+                    <div class="font-mono text-[11px] text-[#7A7774] md:pt-1 whitespace-nowrap">Aug 2022 — May 2024
                     </div>
                 </div>
 
-                <!-- Job 3 -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
-                    <div class="space-y-2">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <h3 class="text-xl font-bold">Peer Mentor - Software Development</h3>
-                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">NJIT</span>
+                <div
+                    class="p-6 bg-white dark:bg-[#1C1B19] border border-[#E2DFD8] dark:border-[#2E2D2A] rounded-xl grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-6 items-start hover:border-[#C8C4BC] dark:hover:border-[#3E3D3A] transition-colors">
+                    <div class="space-y-4">
+                        <div class="flex flex-wrap items-baseline gap-2">
+                            <span class="text-base font-bold text-[#1A1917] dark:text-[#F0EEE9]">Game Room
+                                Attendant</span>
+                            <span
+                                class="font-mono text-[11px] font-medium tracking-wide px-2.5 py-0.5 rounded bg-[#ECEAE5] text-[#7A7774] dark:bg-[#252420]">NJIT</span>
                         </div>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
-                            <li>Mentored undergraduate students in core software development architectures and logic patterns.</li>
-                            <li>Assisted with targeted coursework debugging, environment configurations, and programming projects.</li>
-                            <li>Supported student academic success through structural technical guidance and code reviews.</li>
-                        </ul>
-                    </div>
-                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                        Aug 2022 — May 2024
-                    </div>
-                </div>
-
-                <!-- Job 4 -->
-                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
-                    <div class="space-y-2">
-                        <div class="flex flex-wrap items-center gap-2">
-                            <h3 class="text-xl font-bold">Game Room Attendant</h3>
-                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">NJIT</span>
+                        <div class="space-y-2.5 text-sm text-[#4A4845] dark:text-[#B8B5AE] font-light">
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Managed daily facility operations, resource tracking, and high-volume student
+                                interactions.</div>
+                            <div
+                                class="relative pl-4 before:content-[''] before:absolute before:left-0 before:top-[9px] before:w-1 before:h-1 before:rounded-full before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                                Maintained equipment and technology assets to ensure consistent operational readiness.
+                            </div>
                         </div>
-                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
-                            <li>Managed daily facility operations, resource tracking, and high-volume student interaction.</li>
-                            <li>Maintained facility equipment and technology assets to ensure peak operational readiness.</li>
-                        </ul>
                     </div>
-                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
-                        Aug 2022 — May 2025
+                    <div class="font-mono text-[11px] text-[#7A7774] md:pt-1 whitespace-nowrap">Aug 2022 — May 2025
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- GitHub Contributions -->
-        <section class="space-y-6">
-            <div class="border-l-4 border-blue-500 pl-4">
-                <h2 class="text-2xl font-bold tracking-tight">GitHub Contributions</h2>
+
+        <section class="py-20 border-b border-[#E2DFD8] dark:border-[#2E2D2A] scroll-mt-20 space-y-8">
+            <div>
+                <div
+                    class="inline-flex items-center gap-2 font-mono text-[10px] font-semibold tracking-widest text-[#3D52A0] dark:text-[#7B93E8] uppercase mb-4 before:content-[''] before:block before:width-5 before:h-[1px] before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                    Open Source</div>
+                <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#1A1917] dark:text-[#F0EEE9] mb-2">GitHub
+                    activity</h2>
+                <p class="text-sm text-[#7A7774]">Contribution history and language breakdown.</p>
             </div>
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <img class="w-full md:w-1/2 max-w-md rounded-xl" src="https://github-readme-stats.vercel.app/api?username=jasminnsrutter&show_icons=true&theme=dark" alt="Jasminn's GitHub Stats" />
-                <img class="w-full md:w-1/2 max-w-md rounded-xl" src="https://github-readme-stats.vercel.app/api/top-langs?username=jasminnsrutter&layout=compact&theme=dark" alt="Jasminn's Top Languages" />
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <img class="w-full rounded-xl border border-[#E2DFD8] dark:border-[#2E2D2A] dark:invert dark:hue-rotate-180 dark:opacity-85 dark:hover:opacity-100 transition-all duration-300"
+                    src="https://github-readme-stats.vercel.app/api?username=jasminnsrutter&show_icons=true&theme=graywhite&hide_border=true&bg_color=00000000&title_color=3D52A0&icon_color=3D52A0&text_color=4A4845"
+                    alt="Jasmin's GitHub Stats" />
+                <img class="w-full rounded-xl border border-[#E2DFD8] dark:border-[#2E2D2A] dark:invert dark:hue-rotate-180 dark:opacity-85 dark:hover:opacity-100 transition-all duration-300"
+                    src="https://github-readme-stats.vercel.app/api/top-langs?username=jasminnsrutter&layout=compact&theme=graywhite&hide_border=true&bg_color=00000000&title_color=3D52A0&text_color=4A4845"
+                    alt="Jasmin's Top Languages" />
             </div>
         </section>
 
         <!-- Connect With Me / Contact Section -->
-        <section id="contact" class="scroll-mt-24 space-y-8">
-            <div class="border-l-4 border-pink-500 pl-4">
-                <h2 class="text-3xl font-extrabold tracking-tight">Let's Connect</h2>
-                <p class="text-sm text-slate-500 dark:text-slate-400">Feel free to reach out for positions, collaborations, or questions!</p>
-            </div>
+        <section id="contact" class="py-20 scroll-mt-20">
+            <div
+                class="inline-flex items-center gap-2 font-mono text-[10px] font-semibold tracking-widest text-[#3D52A0] dark:text-[#7B93E8] uppercase mb-4 before:content-[''] before:block before:width-5 before:h-[1px] before:bg-[#3D52A0] dark:before:bg-[#7B93E8]">
+                Contact</div>
 
-            <div class="p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-pink-50 dark:from-slate-800 dark:to-slate-850 border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row justify-between items-center gap-6">
-                <div class="space-y-2 text-center md:text-left">
-                    <h3 class="text-2xl font-bold">Find me on LinkedIn & Beyond</h3>
-                    <p class="text-slate-600 dark:text-slate-300 max-w-md text-sm">
-                        I am always open to discussing new opportunities, web development architecture, and tech trends.
+            <div
+                class="p-8 md:p-12 rounded-2xl bg-white dark:bg-[#1C1B19] border border-[#E2DFD8] dark:border-[#2E2D2A] flex flex-col items-start gap-6 shadow-sm">
+                <div class="space-y-3">
+                    <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-[#1A1917] dark:text-[#F0EEE9]">Open to
+                        new opportunities</h2>
+                    <p class="text-sm text-[#4A4845] dark:text-[#B8B5AE] max-w-md leading-relaxed font-light">
+                        Whether it's a full-time role, freelance project, or just a conversation about technology —
+                        reach out and I'll get back to you promptly.
                     </p>
                 </div>
-                
-                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                    <a href="https://linkedin.com/in/jasmin-rutter" target="_blank" class="px-6 py-3 text-center rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-pink-500 hover:from-blue-700 hover:to-pink-600 transition-all shadow-md shadow-pink-500/10">
-                        Visit My LinkedIn Profile
+                <div class="flex flex-wrap gap-3 pt-2 text-xs font-semibold">
+                    <a href="mailto:jasrutter36@gmail.com"
+                        class="inline-flex items-center gap-2 px-5 py-3.5 rounded-lg bg-[#1A1917] text-[#F8F7F4] dark:bg-[#F0EEE9] dark:text-[#111110] hover:opacity-90 transition-opacity">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        Send an email
                     </a>
-                    <a href="mailto:jasrutter36@gmail.com" class="px-6 py-3 text-center rounded-xl font-bold border border-slate-300 dark:border-slate-600 hover:bg-white dark:hover:bg-slate-700 transition-all">
-                        Email Me
+                    <a href="https://linkedin.com/in/jasmin-rutter" target="_blank"
+                        class="inline-flex items-center gap-2 px-5 py-3.5 rounded-lg bg-transparent text-[#1A1917] dark:text-[#F0EEE9] border border-[#C8C4BC] dark:border-[#3E3D3A] hover:bg-[#F0EEE9] dark:hover:bg-[#242320] transition-colors">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                        LinkedIn
                     </a>
                 </div>
             </div>
@@ -368,38 +506,36 @@
     <script src="index.js"></script>
 
     <!-- footer -->
-     <footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
-        &copy; 2026 Jasmin Rutter. Engineered with Tailwind CSS.
+    <footer
+        class="border-t border-[#E2DFD8] dark:border-[#2E2D2A] py-7 px-6 max-w-[960px] mx-auto flex justify-between items-center gap-4 flex-wrap">
+        <span class="font-mono text-[11px] text-[#7A7774] tracking-wide">&copy; 2026 Jasmin Rutter</span>
+        <div class="flex gap-5 text-xs text-[#7A7774]">
+            <a href="https://github.com/jasminnsrutter" target="_blank"
+                class="hover:text-[#3D52A0] dark:hover:text-[#7B93E8] transition-colors">GitHub</a>
+            <a href="https://linkedin.com/in/jasmin-rutter" target="_blank"
+                class="hover:text-[#3D52A0] dark:hover:text-[#7B93E8] transition-colors">LinkedIn</a>
+            <a href="mailto:jasrutter36@gmail.com"
+                class="hover:text-[#3D52A0] dark:hover:text-[#7B93E8] transition-colors">Email</a>
+        </div>
     </footer>
 
-    <!-- Theme Switcher Logics -->
     <script>
-        const themeToggleBtn = document.getElementById('theme-toggle');
-        const sunIcon = document.getElementById('theme-toggle-sun');
-        const moonIcon = document.getElementById('theme-toggle-moon');
+        const btn = document.getElementById('theme-toggle');
+        const sun = document.getElementById('icon-sun');
+        const moon = document.getElementById('icon-moon');
 
-        function updateIcons() {
-            if (document.documentElement.classList.contains('dark')) {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            } else {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            }
+        function applyTheme() {
+            const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+            sun.style.display = dark ? 'block' : 'none';
+            moon.style.display = dark ? 'none' : 'block';
         }
+        applyTheme();
 
-        // Initial setup
-        updateIcons();
-
-        themeToggleBtn.addEventListener('click', () => {
-            if (document.documentElement.classList.contains('dark')) {
-                document.documentElement.classList.remove('dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                document.documentElement.classList.add('dark');
-                localStorage.setItem('theme', 'dark');
-            }
-            updateIcons();
+        btn.addEventListener('click', () => {
+            const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+            document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+            localStorage.setItem('theme', dark ? 'light' : 'dark');
+            applyTheme();
         });
     </script>
     <script src="index.js"></script>
