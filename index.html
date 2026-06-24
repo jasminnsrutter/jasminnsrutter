@@ -1,60 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasmin Rutter | Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind configuration for class-based dark mode
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Inter Font for enhanced corporate typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Simple script to prevent flash of dark/light mode on load -->
+    <script>
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 
-<body>
+<body
+    class="bg-slate-50/50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-500 antialiased selection:bg-blue-500/10 selection:text-blue-600">
 
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+    <nav
+        class="sticky top-0 z-50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-900/50 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#about"
+                class="text-sm font-semibold tracking-widest text-slate-900 dark:text-white uppercase transition-opacity hover:opacity-80">
+                Jasmin Rutter
+            </a>
+
+            <div class="flex items-center space-x-8 text-[11px] font-medium tracking-widest uppercase text-slate-500 dark:text-slate-400">
+                <a href="#about"
+                    class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+                <a href=" #skills"
+                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Skills</a>
+                <a href=" #projects"
+                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Projects</a>
+                <a href=" #experience"
+                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Experience</a>
+                <a href="#contact"
+                    class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
+
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle"
+                    class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 hover:ring-pink-400 dark:hover:ring-blue-400 transition-all focus:outline-none">
+                    <!-- Sun Icon (visible in dark mode) -->
+                    <svg id="theme-toggle-sun" class="hidden w-5 h-5 text-amber-400" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 2.293a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zm4.243 4.243a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM16 10a1 1 0 011-1h1a1 1 0 110 2h-1a1 1 0 01-1-1zM3 10a1 1 0 011-1h1a1 1 0 110 2H4a1 1 0 01-1-1zm2.293 4.293a1 1 0 011.414 0l.707.707a1 1 0 01-1.414 1.414l-.707-.707a1 1 0 010-1.414zm4.243 4.243a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM11 16a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-4.243-1.414a1 1 0 010 1.414l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 0zM10 5a5 5 0 100 10 5 5 0 000-10z">
+                        </path>
+                    </svg>
+                    <!-- Moon Icon (visible in light mode) -->
+                    <svg id="theme-toggle-moon" class="hidden w-5 h-5 text-slate-500" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+
+            </div>
+        </div>
     </nav>
 
-    <main>
+    <!-- Hero / About Section -->
+    <main id="about" class="max-w-5xl mx-auto px-4 py-12 md:py-20 space-y-24">
 
         <!-- About Section -->
-        <section id="about" class="reveal" style="padding: 40px 0">
-            <h1>Hi, I'm Jasmin Rutter</h1>
-            <p>I am a web developer building clean, responsive projects.</p>
+        <section id="about" class="space-y-6 scroll-mt-24">
+            <div class="space-y-3">
+                <h1 class="text-4xl md:text-6xl font-black tracking-tight">
+                    👋 Hi, I'm <span class="bg-gradient-to-r from-blue-600 via-sky-500 to-pink-500 bg-clip-text text-transparent">Jasmin Rutter</span>
+                </h1>
+                <h3 class="text-xl md:text-2xl font-semibold text-slate-600 dark:text-slate-400">
+                    Information Technology Graduate | Software Engineer & Web Developer
+                </h3>
+            </div>
+
+            <!-- Badges -->
+            <div class="flex flex-wrap gap-3 pt-2">
+                <a href="https://jasminnsrutter.github.io/jasminnsrutter/" target="_blank" class="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300 border border-sky-200 dark:border-sky-900 transition-transform hover:-translate-y-0.5">
+                    🌐 Live Portfolio
+                </a>
+                <a href="https://linkedin.com/in/jasmin-rutter" target="_blank" class="inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-600 text-white transition-transform hover:-translate-y-0.5 shadow-md shadow-blue-500/20">
+                    💼 LinkedIn
+                </a>
+            </div>
+
+            <p class="text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+                I am an <strong class="text-slate-900 dark:text-white font-semibold">Information Technology graduate</strong> with hands-on experience in software engineering, full-stack web development, and database management. I love building practical applications, engineering clean user interfaces, and solving real-world problems with code.
+            </p>
+
+            <!-- Education Sub-card -->
+            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm max-w-2xl relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-blue-500 to-pink-500"></div>
+                <div class="flex justify-between items-start flex-wrap gap-2 pl-2">
+                    <div>
+                        <h4 class="font-bold text-lg">Bachelor of Science in Information Technology</h4>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">New Jersey Institute of Technology (NJIT)</p>
+                    </div>
+                    <span class="text-xs font-semibold px-3 py-1 rounded-full bg-pink-50 text-pink-700 dark:bg-pink-950/50 dark:text-pink-300 border border-pink-200 dark:border-pink-900">
+                        Graduated: May 2025
+                    </span>
+                </div>
+            </div>
         </section>
 
-        <hr>
+        <!-- Technical Skills Section -->
+        <section id="skills" class="scroll-mt-24 space-y-8">
+            <div class="border-l-4 border-pink-500 pl-4">
+                <h2 class="text-3xl font-extrabold tracking-tight">Technical Skills</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Tools, languages, and frameworks I use to bring ideas to life.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Languages Card -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-colors">
+                    <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-2">
+                        <span>🔤</span> Languages
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Python</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Java</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">JavaScript</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">SQL</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">PHP</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Bash</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">HTML5</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Frameworks Card -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-pink-400 dark:hover:border-pink-500 transition-colors">
+                    <h3 class="font-bold text-lg text-pink-600 dark:text-pink-400 mb-4 flex items-center gap-2">
+                        <span>🛠️</span> Frameworks & Libraries
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Django</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">React</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Node.js</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Pico.css</span>
+                    </div>
+                </div>
+
+                <!-- Databases Card -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-sky-400 dark:hover:border-sky-500 transition-colors">
+                    <h3 class="font-bold text-lg text-sky-600 dark:text-sky-400 mb-4 flex items-center gap-2">
+                        <span>🗄️</span> Databases
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">MySQL</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">MariaDB</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">SQLite</span>
+                    </div>
+                </div>
+
+                <!-- Tools & Cloud Card -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-400 dark:hover:border-blue-500 transition-colors md:col-span-2 lg:col-span-2">
+                    <h3 class="font-bold text-lg text-blue-600 dark:text-blue-400 mb-4 flex items-center gap-2">
+                        <span>⚙️</span> Tools, Cloud & Testing
+                    </h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Git & GitHub</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Docker</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Linux</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">GitHub Pages</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Gherkin</span>
+                        <span class="px-3 py-1 text-sm font-medium rounded-md bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Cucumber</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <!-- Projects Section -->
-        <section id="projects" style="padding: 40px 0;">
-            <h2>My Projects</h2>
+        <section id="projects" class="scroll-mt-24 space-y-8">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <h2 class="text-3xl font-extrabold tracking-tight">Featured Projects</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Some of the software engineered architectures I've built.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <article class="flex flex-col justify-between p-6 bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 hover:shadow-xl dark:hover:shadow-black/30 transition-all duration-300">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start gap-4">
+                            <h3 class="text-xl font-bold tracking-tight hover:text-blue-500">
+                                <a href="https://github.com/jasminnsrutter/jasminnsrutter" target="_blank">Personal Portfolio Website 🔗</a>
+                            </h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            A clean, responsive single-page portfolio designed to showcase my developer journey, active projects, and technical experience.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">HTML5</span>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">CSS3</span>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Pico.css</span>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">GitHub Pages</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 flex gap-4">
+                        <a href="https://jasminnsrutter.github.io/jasminnsrutter/" target="_blank" class="text-sm font-bold text-pink-600 dark:text-pink-400 hover:underline">View Live Site &rarr;</a>
+                    </div>
+                </article>
 
-            <!-- Pico turns <article> into a beautiful, clean card automatically -->
-            <article>
-                <h3>Project One</h3>
-                <p>Description of what this project does and the tech I used.</p>
-                <a href="#">View Code &rarr;</a>
-            </article>
+                <!-- Project 2 -->
+                <article class="flex flex-col justify-between p-6 bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 hover:shadow-xl dark:hover:shadow-black/30 transition-all duration-300">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-start gap-4">
+                            <h3 class="text-xl font-bold tracking-tight hover:text-blue-500">
+                                <a href="https://github.com/jasminnsrutter" target="_blank">[Project Name Placeholder] 🔗</a>
+                            </h3>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            A brief description of another project you are proud of. Explain what problem it solves and what you built.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Python</span>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">Django</span>
+                            <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="pt-6">
+                        <a href="https://github.com/jasminnsrutter" target="_blank" class="text-sm font-bold text-pink-600 dark:text-pink-400 hover:underline">View Code &rarr;</a>
+                    </div>
+                </article>
+            </div>
         </section>
 
-        <hr>
+        <!-- Professional Experience Section -->
+        <section id="experience" class="scroll-mt-24 space-y-8">
+            <div class="border-l-4 border-pink-500 pl-4">
+                <h2 class="text-3xl font-extrabold tracking-tight">Professional Experience</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">A timeline of my professional work and leadership history.</p>
+            </div>
 
-        <section id="contact" style="padding: 40px 0;">
-            <h2>Let's Connect</h2>
-            <article>
-                <h3>Find me on LinkedIn</h3>
-                <p>I am always open to discussing new opportunities, web development, and tech trends. Feel free to
-                    reach out!</p>
+            <!-- Timeline Stack -->
+            <div class="space-y-6">
+                <!-- Job 1 -->
+                 <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
+                    <div class="space-y-2">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="text-xl font-bold">Software Engineer</h3>
+                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">Case Medical</span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
+                            <li>Developing a new user interface module for efficient RFID and UDI data entry.</li>
+                            <li>Engineering backend logic to validate ID uniqueness and generate tracking labels.</li>
+                            <li>Optimizing website content and visuals with marketing teams to improve SEO.</li>
+                        </ul>
+                    </div>
+                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                        June 2025 — Present
+                    </div>
+                </div>
 
-                <a href="https://linkedin.com/in/jasmin-rutter" role="button" target="_blank">
-                    Visit My LinkedIn Profile
-                </a>
-            </article>
+                <!-- Job 2 -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
+                    <div class="space-y-2">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="text-xl font-bold">Software Engineer Intern</h3>
+                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">NJ Transit</span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
+                            <li>Assisted in core software development initiatives and application feature deployments.</li>
+                            <li>Worked heavily with backend infrastructure architectures, database queries, and data management systems.</li>
+                            <li>Collaborated closely with cross-functional development teams on agile application improvements.</li>
+                        </ul>
+                    </div>
+                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                        Jan 2024 — June 2024
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
+                    <div class="space-y-2">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="text-xl font-bold">Peer Mentor - Software Development</h3>
+                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">NJIT</span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
+                            <li>Mentored undergraduate students in core software development architectures and logic patterns.</li>
+                            <li>Assisted with targeted coursework debugging, environment configurations, and programming projects.</li>
+                            <li>Supported student academic success through structural technical guidance and code reviews.</li>
+                        </ul>
+                    </div>
+                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                        Aug 2022 — May 2024
+                    </div>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col md:flex-row justify-between gap-4">
+                    <div class="space-y-2">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <h3 class="text-xl font-bold">Game Room Attendant</h3>
+                            <span class="text-xs px-2.5 py-0.5 font-semibold rounded bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300">NJIT</span>
+                        </div>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-slate-600 dark:text-slate-300 marker:text-pink-500">
+                            <li>Managed daily facility operations, resource tracking, and high-volume student interaction.</li>
+                            <li>Maintained facility equipment and technology assets to ensure peak operational readiness.</li>
+                        </ul>
+                    </div>
+                    <div class="text-sm font-semibold text-slate-500 dark:text-slate-400 whitespace-nowrap">
+                        Aug 2022 — May 2025
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GitHub Contributions -->
+        <section class="space-y-6">
+            <div class="border-l-4 border-blue-500 pl-4">
+                <h2 class="text-2xl font-bold tracking-tight">GitHub Contributions</h2>
+            </div>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <img class="w-full md:w-1/2 max-w-md rounded-xl" src="https://github-readme-stats.vercel.app/api?username=jasminnsrutter&show_icons=true&theme=dark" alt="Jasminn's GitHub Stats" />
+                <img class="w-full md:w-1/2 max-w-md rounded-xl" src="https://github-readme-stats.vercel.app/api/top-langs?username=jasminnsrutter&layout=compact&theme=dark" alt="Jasminn's Top Languages" />
+            </div>
+        </section>
+
+        <!-- Connect With Me / Contact Section -->
+        <section id="contact" class="scroll-mt-24 space-y-8">
+            <div class="border-l-4 border-pink-500 pl-4">
+                <h2 class="text-3xl font-extrabold tracking-tight">Let's Connect</h2>
+                <p class="text-sm text-slate-500 dark:text-slate-400">Feel free to reach out for positions, collaborations, or questions!</p>
+            </div>
+
+            <div class="p-8 rounded-3xl bg-gradient-to-br from-blue-50 to-pink-50 dark:from-slate-800 dark:to-slate-850 border border-slate-200 dark:border-slate-700 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="space-y-2 text-center md:text-left">
+                    <h3 class="text-2xl font-bold">Find me on LinkedIn & Beyond</h3>
+                    <p class="text-slate-600 dark:text-slate-300 max-w-md text-sm">
+                        I am always open to discussing new opportunities, web development architecture, and tech trends.
+                    </p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                    <a href="https://linkedin.com/in/jasmin-rutter" target="_blank" class="px-6 py-3 text-center rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 to-pink-500 hover:from-blue-700 hover:to-pink-600 transition-all shadow-md shadow-pink-500/10">
+                        Visit My LinkedIn Profile
+                    </a>
+                    <a href="mailto:jasrutter36@gmail.com" class="px-6 py-3 text-center rounded-xl font-bold border border-slate-300 dark:border-slate-600 hover:bg-white dark:hover:bg-slate-700 transition-all">
+                        Email Me
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
+    <script src="index.js"></script>
+
+    <!-- footer -->
+     <footer class="border-t border-slate-200 dark:border-slate-800 py-8 text-center text-xs text-slate-500 dark:text-slate-400">
+        &copy; 2026 Jasmin Rutter. Engineered with Tailwind CSS.
+    </footer>
+
+    <!-- Theme Switcher Logics -->
+    <script>
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('theme-toggle-sun');
+        const moonIcon = document.getElementById('theme-toggle-moon');
+
+        function updateIcons() {
+            if (document.documentElement.classList.contains('dark')) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        // Initial setup
+        updateIcons();
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+            updateIcons();
+        });
+    </script>
     <script src="index.js"></script>
 </body>
 
