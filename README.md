@@ -31,7 +31,7 @@ I am an **Information Technology graduate** with hands-on experience in software
 
 ## 🚀 Featured Projects
 
-### 📂 SuiteCRM to ActiveCampaign Middleware (FastAPI, Python, MySQL/phpMyAdmin) | Summer 2026
+### 📂 SuiteCRM to ActiveCampaign Middleware (FastAPI, Python, MySQL) | Summer 2026
 - Automated CRM contact syncing and email segmentation  
 - Synced contacts and accounts from SuiteCRM target lists to ActiveCampaign  
 - Built scheduled and manual import processes for contact management  
